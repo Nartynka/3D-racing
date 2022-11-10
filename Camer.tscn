@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CamerPivot.gd" type="Script" id=1]
+
+[node name="CamerPivot" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.583618, 0 )
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 9.13817e-09, -8.69439e-08, 0, 0.994522, 0.104528, 8.74228e-08, 0.104528, -0.994522, 0, 2, -7 )
+current = true

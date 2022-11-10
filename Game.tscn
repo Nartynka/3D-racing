@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://RacingCar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TRACK1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Track.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SpatialMaterial" id=16]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 1 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 16 )
+size = Vector3( 80, 1, 80 )
+
+[sub_resource type="ConcavePolygonShape" id=13]
+data = PoolVector3Array( -40, 0.5, 40, 40, 0.5, 40, -40, -0.5, 40, 40, 0.5, 40, 40, -0.5, 40, -40, -0.5, 40, 40, 0.5, -40, -40, 0.5, -40, 40, -0.5, -40, -40, 0.5, -40, -40, -0.5, -40, 40, -0.5, -40, 40, 0.5, 40, 40, 0.5, -40, 40, -0.5, 40, 40, 0.5, -40, 40, -0.5, -40, 40, -0.5, 40, -40, 0.5, -40, -40, 0.5, 40, -40, -0.5, -40, -40, 0.5, 40, -40, -0.5, 40, -40, -0.5, -40, 40, 0.5, 40, -40, 0.5, 40, 40, 0.5, -40, -40, 0.5, 40, -40, 0.5, -40, 40, 0.5, -40, -40, -0.5, 40, 40, -0.5, 40, -40, -0.5, -40, 40, -0.5, 40, 40, -0.5, -40, -40, -0.5, -40 )
+
+[sub_resource type="PrismMesh" id=8]
+left_to_right = 0.0
+size = Vector3( 12, 2, 6 )
+
+[sub_resource type="ConcavePolygonShape" id=11]
+data = PoolVector3Array( -6, 1, 3, 6, -1, 3, -6, -1, 3, -6, 1, -3, -6, -1, -3, 6, -1, -3, -6, 1, 3, -6, 1, -3, 6, -1, 3, -6, 1, -3, 6, -1, -3, 6, -1, 3, -6, 1, -3, -6, 1, 3, -6, -1, -3, -6, 1, 3, -6, -1, 3, -6, -1, -3, -6, -1, 3, 6, -1, 3, -6, -1, -3, 6, -1, 3, 6, -1, -3, -6, -1, -3 )
+
+[sub_resource type="PrismMesh" id=10]
+left_to_right = 0.0
+size = Vector3( 12, 2, 5 )
+
+[sub_resource type="ConcavePolygonShape" id=12]
+data = PoolVector3Array( -6, 1, 2.5, 6, -1, 2.5, -6, -1, 2.5, -6, 1, -2.5, -6, -1, -2.5, 6, -1, -2.5, -6, 1, 2.5, -6, 1, -2.5, 6, -1, 2.5, -6, 1, -2.5, 6, -1, -2.5, 6, -1, 2.5, -6, 1, -2.5, -6, 1, 2.5, -6, -1, -2.5, -6, 1, 2.5, -6, -1, 2.5, -6, -1, -2.5, -6, -1, 2.5, 6, -1, 2.5, -6, -1, -2.5, 6, -1, 2.5, 6, -1, -2.5, -6, -1, -2.5 )
+
+[sub_resource type="PrismMesh" id=14]
+left_to_right = 0.0
+size = Vector3( 100, 13, 5 )
+
+[sub_resource type="ConcavePolygonShape" id=15]
+data = PoolVector3Array( -50, 6.5, 2.5, 50, -6.5, 2.5, -50, -6.5, 2.5, -50, 6.5, -2.5, -50, -6.5, -2.5, 50, -6.5, -2.5, -50, 6.5, 2.5, -50, 6.5, -2.5, 50, -6.5, 2.5, -50, 6.5, -2.5, 50, -6.5, -2.5, 50, -6.5, 2.5, -50, 6.5, -2.5, -50, 6.5, 2.5, -50, -6.5, -2.5, -50, 6.5, 2.5, -50, -6.5, 2.5, -50, -6.5, -2.5, -50, -6.5, 2.5, 50, -6.5, 2.5, -50, -6.5, -2.5, 50, -6.5, 2.5, 50, -6.5, -2.5, -50, -6.5, -2.5 )
+
+[node name="Game" type="Spatial"]
+
+[node name="Ground" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Ground"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/StaticBody"]
+shape = SubResource( 13 )
+
+[node name="Ramps" type="Spatial" parent="."]
+
+[node name="Ramp1" type="MeshInstance" parent="Ramps"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1098, 1.5316, 0 )
+mesh = SubResource( 8 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="Ramps/Ramp1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramps/Ramp1/StaticBody"]
+shape = SubResource( 11 )
+
+[node name="Ramp2" type="MeshInstance" parent="Ramps"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.2147, 1.5316, -9.89867 )
+mesh = SubResource( 10 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="Ramps/Ramp2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramps/Ramp2/StaticBody"]
+shape = SubResource( 12 )
+
+[node name="Ramp3" type="MeshInstance" parent="Ramps"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.2147, 1.5316, 8.10204 )
+mesh = SubResource( 10 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="Ramps/Ramp3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ramps/Ramp3/StaticBody"]
+shape = SubResource( 12 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 7, 81.668 )
+mesh = SubResource( 14 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 15 )
+
+[node name="RacingCar" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1351, -24.7447 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+[node name="track_k3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -62, -5, -2 )
+
+[node name="Track" parent="." instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5, -25, -42 )
+
+[node name="track_k4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -67, -11, -49 )

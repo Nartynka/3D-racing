@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://RacingCar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
+
+[sub_resource type="ProceduralSky" id=18]
+
+[sub_resource type="Environment" id=19]
+background_mode = 2
+background_sky = SubResource( 18 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.5
+ambient_light_sky_contribution = 0.0
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id=20]
+
+[node name="World" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 19 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.71934, 0.694658, 0, -0.694658, -0.71934, 0, 83.5, 4 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_color = Color( 0.6, 0.6, 0.6, 1 )
+shadow_contact = 0.34
+directional_shadow_mode = 0
+directional_shadow_normal_bias = 0.5
+
+[node name="RacingCar" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 2, -4 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+physics_material = SubResource( 20 )
+cell_size = Vector3( 1, 0.3, 1 )
+data = {
+"cells": PoolIntArray( 9, 0, 97, 9, 1, 97, 10, 1, 100, 65545, 1, 36, 9, 3, 88, 9, 65528, 97, 65546, 65528, 34, 65547, 65528, 34, 65548, 65528, 34, 9, 65529, 97, 65545, 65529, 34, 65546, 65529, 34, 65548, 65529, 34, 9, 65530, 97, 65544, 65530, 34, 65547, 65530, 34, 65548, 65530, 34, 9, 65531, 97, 65543, 65531, 34, 65544, 65531, 34, 65545, 65531, 34, 65546, 65531, 34, 65547, 65531, 34, 9, 65532, 97, 65543, 65532, 34, 65544, 65532, 34, 65545, 65532, 34, 65546, 65532, 34, 9, 65533, 97, 65543, 65533, 34, 65544, 65533, 34, 9, 65534, 97, 65543, 65534, 34, 65545, 65534, 34, 9, 65535, 97 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
